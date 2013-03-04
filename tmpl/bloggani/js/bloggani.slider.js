@@ -7,7 +7,6 @@
 	$.fn.blogganiSlider = function(options) {  
 
 	var defaults = {
-		height : 400,
 		interval : 5000,
 		autoplay : true,
 		prev : '.controller-prev',	
@@ -22,9 +21,11 @@
 			var totalSlides = slides.length;
 			var currentIndex = 0;
 			var slideShowInterval;
+			$(slides).hide().removeClass('active');
+			$(slides).first().addClass('active').fadeIn();
 			
 			//height
-			container.css('height', options.height);
+			container.css('height', $(slides).first().height());
 			
 			var nextIndex = function(){
 				currentIndex++;
@@ -48,13 +49,15 @@
 			activateInterval();
 			
 			var slide = function($i){
-				$(slides).removeClass('active').fadeOut();
+				$(slides).fadeOut().removeClass('active');
 				$(slides.get($i)).addClass('active').fadeIn();
 			}
 			
 			var resize = function() {
 				$(window).on('resize',function(){
-					container.css('height',$(slides).first().height());
+					if($(slides).hasClass('active')){
+						container.css('height',$(slides).height());
+					}
 				});
 			}
 			
@@ -71,9 +74,8 @@
 				clearInterval(slideShowInterval);
 				activateInterval();
 			});
-			
+
 			resize();
-			slide(0);
 			
 		});  
 	};  

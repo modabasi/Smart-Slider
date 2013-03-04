@@ -10,13 +10,17 @@
 	
     $helper->addJQuery($document);
 	
-    $document->addScriptDeclaration("jQuery(document).ready(function($) {
-		$('#sp-smart-slider{$module->id} .bloggani-slider').blogganiSlider({
-			height : {$option['height']},
-			autoplay : {$option['autoplay']},
-			interval : {$option['interval']}
+    $document->addScriptDeclaration("
+		jQuery(function($){
+			$(window).load(function() {
+				$('#sp-smart-slider{$module->id} .bloggani-slider').blogganiSlider({
+					autoplay : {$option['autoplay']},
+					interval : {$option['interval']}
+				});
+			});
+		
 		});
-    });");
+	");
 	
 	$total=count($data)-1;
 ?>
