@@ -96,7 +96,7 @@
                     array(),
                     (int) $this->params->get('cache_time'),
                     array($this,'onDataError'),
-                    true
+                    false
                 );
             } else {
                 $data = $this->generate();
