@@ -6,6 +6,9 @@
     * @license   http://www.gnu.org/licenses/gpl-2.0.html GNU/GPLv2
     */
 
+    // no direct access
+    defined('_JEXEC') or die('Restricted access');
+	
     class spArticleSliderHelper
     {
         public $name = 'Article';
@@ -230,41 +233,31 @@
 
             return 'var sp_item_opened;
 
-
-
-            function spSelectArticle(id, title, cid, $null, url)
-            {
-
-
-            var data = jQuery("body").data("article");
-
-
-            jQuery("#"+data.id).val(id);
-            jQuery("#"+data.article).val(title).focus();
-            SqueezeBox.close();
+            function spSelectArticle(id, title, cid, $null, url){
+                var data = jQuery("body").data("article");
+                jQuery("#"+data.id).val(id);
+                jQuery("#"+data.article).val(title).focus();
+                SqueezeBox.close();
             }
-
-
 
             jQuery(document).ready(function(){
 
+            //Joomla 3.1
+            jQuery("#moduleOptions").delegate("a.model", "mouseenter", function(event){
+                eval( "var $callerData=(" + jQuery(this).attr("ref") + ")" );
+                jQuery("body").data("article", $callerData );
+            });
 
-            jQuery("#moduleOptions").delegate("a.model", "mouseenter", function(event)
-            {
-            eval( "var $callerData=(" + jQuery(this).attr("ref") + ")" );
-            jQuery("body").data("article", $callerData );
+            //Joomla 3.2
+            jQuery("#attrib-sliders").delegate("a.model", "mouseenter", function(event){
+                eval( "var $callerData=(" + jQuery(this).attr("ref") + ")" );
+                jQuery("body").data("article", $callerData );
+            });
+
             });
 
 
-            });
-
-
-            window.addEvent("domready",function()
-            {
-
-
-
-
+            window.addEvent("domready",function(){
 
             $(document.body).addEvent("change:relay(.'.$this->uniqid.'-slider-title-custom)", function(event, element) {
             if( this.get("value")=="custom" )
@@ -276,10 +269,6 @@
             this.getParent().getNext().setStyle("display","none");
             }
             });
-
-
-
-
 
             $(document.body).addEvent("change:relay(.'.$this->uniqid.'-slider-image-type-custom)", function(event, element) {
 
@@ -333,9 +322,6 @@
 
             });';
 
-
-
-
         }
 
 
@@ -378,22 +364,6 @@
 
             window.addEvent("domready",function() {
 
-            /*$(document.body).addEvent("click:relay(a.model)", function(event, element)
-            {
-
-
-            event.stop();
-            this.addEvent("click", function(){
-            if( this.get("ref") )
-            {
-            sp_item_opened = JSON.encode(this.get("ref"));
-            }
-            })
-
-            });*/
-
-
-
             $(document.body).addEvent("change:relay(.'.$this->uniqid.'-slider-title-custom)", function(event, element) {
             if( this.get("value")=="custom" )
             {
@@ -404,10 +374,6 @@
             this.getParent().getNext().setStyle("display","none");
             }
             });
-
-
-
-
 
             $(document.body).addEvent("change:relay(.'.$this->uniqid.'-slider-image-type-custom)", function(event, element) {
 
@@ -464,9 +430,6 @@
 
             ';
 
-
-
-
         }
 
         public function JavaScript()
@@ -479,6 +442,7 @@
         {
 
             $article = $helper->getArticle($this->params['id']);
+
             $article['title'] = ($this->params['titletype']=='yes')?$this->params['customtitle']:$article['title'];
             if( isset($article['images']) and !empty($article['images']) )
             {
@@ -489,6 +453,11 @@
 
             $this->params['image'] = ($this->params['customimage']=='yes')?$this->params['image']:$image;
             $this->params['thumb'] = ($this->params['customimage']=='yes')?$this->params['thumb']:$thumb;
+
+            if($this->params['showlink'] =='custom'){
+                $article['link'] = $this->params['link'];
+            }
+
             return $article+$this->params;
         }
 }

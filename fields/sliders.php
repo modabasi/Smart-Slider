@@ -76,8 +76,6 @@
             return $data;
         }
 
-
-
         protected function getInput()
         {
             $document = JFactory::getDocument();
@@ -129,9 +127,6 @@
             </div>
             </li>
             </ul>';
-
-
-
 
             ////  saved items 
 

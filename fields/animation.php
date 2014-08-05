@@ -30,12 +30,7 @@
         {
 
 
-
             $html='<div id="sp-animation-setting-panel">';
-
-
-
-
 
             if( isset($item->fieldset) )
             {
@@ -205,10 +200,7 @@
                                         value="'.$fieldvalue.'">  <span class="add-on">'.$field['unit'].'</span>
                                         </div>';
 
-
-
                                     } else {
-
 
                                         $html .= '<input type="text"
                                         id="'.$field['id'].'" 
@@ -219,16 +211,12 @@
 
                                     }
 
-
-
                                     $html .= '
                                     </div>
                                     </div>';
                                     break;
 
                                 case 'checkbox':
-
-
 
 
                                     $html .= '<li>';
@@ -254,9 +242,6 @@
 
                                     <div class="controls">';
 
-
-
-
                                     $html .= '<select
                                     id="'.$field['id'].'" 
                                     class="'.$field['class'].'" 
@@ -279,12 +264,7 @@
 
                                     break;
 
-
-
-
                                 case 'radio':
-
-
 
                                     $html .= '<div class="control-group">
                                     <div class="control-label">
@@ -294,12 +274,7 @@
 
                                     <div class="controls">';
 
-
-
-
                                     $html .= '<fieldset id="jform_'.$field['name'].'" class="radio btn-group">';
-
-
 
                                     $i=0;
                                     foreach($field->option as $key=>$option)
@@ -361,21 +336,7 @@
 
                 }
 
-
-
-
-
-
-
             }    
-
-
-
-
-
-
-
-
 
             $html.='</div>';
             return $html;

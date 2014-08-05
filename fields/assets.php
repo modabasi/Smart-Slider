@@ -19,32 +19,31 @@
             /** Adding Bootstrap */
             if (JVERSION < 3)
             {
-                $doc->addStyleSheet(JURI::root(true).$this->element['url'].'/bootstrap/css/bootstrap.min.css');	
-                $doc->addStyleSheet(JURI::root(true).$this->element['url'].'/style.css');			
-                $doc->addScript(JURI::root(true).$this->element['url'].'/jquery.min.js');			
-                $doc->addScript(JURI::root(true).$this->element['url'].'/jquery-noconflict.js');			
-                $doc->addScript(JURI::root(true).$this->element['url'].'/bootstrap/js/bootstrap.min.js');	
+                $doc->addStyleSheet(JURI::root(true).$this->element['url'].'/bootstrap/css/bootstrap.min.css'); 
+                $doc->addStyleSheet(JURI::root(true).$this->element['url'].'/style.css');           
+                $doc->addScript(JURI::root(true).$this->element['url'].'/jquery.min.js');           
+                $doc->addScript(JURI::root(true).$this->element['url'].'/jquery-noconflict.js');            
+                $doc->addScript(JURI::root(true).$this->element['url'].'/bootstrap/js/bootstrap.min.js');   
                 $doc->addScriptDeclaration( file_get_contents(dirname(dirname(__FILE__)).'/assets/script.js') );
             } else {
+                JHtml::_('jquery.ui', array('core', 'sortable'));
                 $doc->addScriptDeclaration( file_get_contents(dirname(dirname(__FILE__)).'/assets/script-3.js') );
                 $doc->addStyleSheet(JURI::root(true).$this->element['url'].'/style-3.css');
             }
-            
-            
-            
 
-            JHTML::_('behavior.modal');
+            JHtml::_('behavior.modal');
+
             $script = array();
+
             $script[] = '
-            window.addEvent("domready",function(){
+            jQuery(document).ready(function(){
             SqueezeBox.initialize({});
-            $(document.body).addEvent("click:relay(a.model)", function(event, element) {
-            event.stop();
+            jQuery(document).on("click", "a.model", function(event, element) {
+            event.preventDefault();
             SqueezeBox.assign(element, {
             parse: \'rel\'
             });
             });
-
             });';
 
             $script[] = ' function jInsertFieldValue(value, id) {';

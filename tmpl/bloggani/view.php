@@ -1,7 +1,7 @@
 <?php
     /**
     * @author    JoomShaper http://www.joomshaper.com
-    * @copyright Copyright (C) 2010 - 2013 JoomShaper
+    * @copyright Copyright (C) 2010 - 2014 JoomShaper
     * @license   http://www.gnu.org/licenses/gpl-2.0.html GNU/GPLv2
     */
 

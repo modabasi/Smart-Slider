@@ -1,7 +1,7 @@
 <?php
     /**
     * @author    JoomShaper http://www.joomshaper.com
-    * @copyright Copyright (C) 2010 - 2013 JoomShaper
+    * @copyright Copyright (C) 2010 - 2014 JoomShaper
     * @license   http://www.gnu.org/licenses/gpl-2.0.html GNU/GPLv2
     */
 
@@ -59,10 +59,17 @@
 
     <!--Items controller-->
     <div style="display:none" class="sp-extreme-controllers">
-        <?php foreach($data as $key=>$value): ?>
+        <?php foreach($data as $key=>$value):
+
+         ?>
             <div class="sp-smart-slider-item sp-anim-<?php echo $key ?>">
-                <h2><?php echo $value['title'] ?></h2>
-                <p><?php echo $value['posttitle'] ?></p>
+                <h2>
+                    <?php 
+                    if( $value['titletype']=='custom' ) echo $value['customtitle'];
+                    else echo $value['title'] ?>
+                </h2>
+                <p>
+                    <?php echo $value['posttitle'] ?></p>
             </div>
             <?php endforeach; ?>	
     </div>	

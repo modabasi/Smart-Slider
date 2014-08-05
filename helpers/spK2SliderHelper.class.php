@@ -5,7 +5,10 @@
     * @copyright Copyright (C) 2010 - 2013 JoomShaper
     * @license   http://www.gnu.org/licenses/gpl-2.0.html GNU/GPLv2
     */
-
+	
+    // no direct access
+    defined('_JEXEC') or die('Restricted access');
+	
     class spK2SliderHelper
     {
         public $name = 'K2';
@@ -516,6 +519,10 @@
             $article['title'] = ($this->params['titletype']=='yes')?$this->params['customtitle']:$article['title'];
 			
 			$images = $this->getImage($article['id']);
+
+            if($this->params['showlink'] =='custom'){
+                $article['link'] = $this->params['link'];
+            }
 
             $this->params['image'] = ($this->params['customimage']=='yes')?$this->params['image']:$images['image'];
             $this->params['thumb'] = ($this->params['customimage']=='yes')?$this->params['thumb']:$images['thumb'];

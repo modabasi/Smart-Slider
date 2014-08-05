@@ -14,7 +14,7 @@
   </files>
   <config>
 	<fieldset name="Basic">
-		<field name="autoplay" type="radio" default="1" label="Auto Play" description="Whether to enable or disable autoplay">
+		<field name="autoplay" type="list" default="1" label="Auto Play" description="Whether to enable or disable autoplay">
 			<option value="0">No</option>
 			<option value="1">Yes</option>
 		</field>

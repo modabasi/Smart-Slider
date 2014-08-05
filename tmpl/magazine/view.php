@@ -1,7 +1,7 @@
 <?php
     /**
     * @author    JoomShaper http://www.joomshaper.com
-    * @copyright Copyright (C) 2010 - 2013 JoomShaper
+    * @copyright Copyright (C) 2010 - 2014 JoomShaper
     * @license   http://www.gnu.org/licenses/gpl-2.0.html GNU/GPLv2
     */
 
@@ -71,7 +71,7 @@
             if( isset($val['pretitle']) and !empty($val['pretitle']) ) echo '<p class="nivo-pretitle">' . $val['pretitle'] . '</p>';
             
 			//Linked title
-			if(isset($value['showlink']) and $value['showlink']=='yes' ) echo '<a href="' . $value['link'] . '">';
+			if(isset($val['showlink']) and $val['showlink']=='yes' ) echo '<a href="' . $val['link'] . '">';
 			
 				// check title type
 				if( isset($val['titletype']) and $val['titletype']=='custom' )
@@ -84,7 +84,7 @@
 				}
 			
 			//Linked title	
-			if(isset($value['showlink']) and $value['showlink']=='yes' ) echo '</a>';
+			if(isset($val['showlink']) and $val['showlink']=='yes' ) echo '</a>';
 
 
             // add post title

@@ -206,9 +206,7 @@ div.sp-slider-option-container fieldset.panelform {
 #sp-animation-setting-panel li > label {
 	display:inline-block;
 	width:160px
-	
 }
-
 
 .sp-animation-unit {
 	font-style:italic;
@@ -223,4 +221,28 @@ div.sp-slider-option-container fieldset.panelform {
 }
 #sp-animation-setting-panel fieldset li input[type="checkbox"] ~ .sp-animation-unit {
 clear:none
+}
+
+
+/* Joomla 3.2 */
+
+#attrib-sliders > .control-label,
+#attrib-animation > .control-label{
+	display: none;
+}
+
+
+#attrib-sliders .controls,
+#attrib-animation .controls{
+	margin-left: 0 !important;
+}
+
+#attrib-sliders .controls > ul{
+	margin: 0;
+	padding: 0;
+}
+
+
+#attrib-animation #sp-animation-setting-panel .controls{
+	margin-left: 200px !important
 }
