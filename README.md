@@ -1,4 +1,4 @@
 Joomla Module SP Smart Slider
 ============
 
-Smart Slider Module version 1.0.3 for Joomla
+Smart Slider Module version 2.2 for Joomla
