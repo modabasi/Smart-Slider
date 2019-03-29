@@ -71,12 +71,12 @@
             {
                 $className = 'sp'.ucfirst($class['source']).'SliderHelper';
                 include_once 'helpers/'.$className.'.class.php';
-                $$class['source'] = new $className();
-                $$class['source']->params = $params[$index];
+                $classFix = new $className();
+                $classFix->params = $params[$index];
 
                 if( isset($params[$index]['state']) and $params[$index]['state']!='published' ) continue;
 
-                $data[]= $$class['source']->display($this);
+                $data[]= $classFix->display($this);
             }
 
             return $data;
